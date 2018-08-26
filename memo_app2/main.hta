@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memo_app</title>
+
+  <!-- HTA Application config -->
+  <hta:application 
+    applicationname="Memo_app" 
+    singleinstance="yes" 
+    showintaskbar="no" 
+    caption="no" 
+    border="none" 
+    innerborder="no" 
+    navigable="yes"
+    scroll="auto"
+  />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href=".\app_config\css\bootstrap.min.css">
+  <link rel="stylesheet" href=".\app_config\css\style.css">
+  <!-- Javascript -->
+  <script src=".\app_config\js\jquery.min.js"></script> 
+  <script src=".\app_config\js\bootstrap.min.js"></script> 
+  <script src=".\app_config\js\memo_app.js"></script>
+</head>
+<body>
+<div id="memo-input-form">
+  <p>管理番号:<span id="memo_id"></span></p>
+  <input type="text" class="form-control" id="memo_title" placeholder="タイトルを入力してください">
+  <textarea id="memo_text" class="form-control" placeholder="本文を入力してください"></textarea>
+  
+
+  <div class="container mb-3">
+    <div class="row">
+      <input id="pre" class="btn btn-secondary col-5" type="button" value="◁">
+      <input id="new" class="btn btn-secondary col-5" type="button"value="▷">
+    </div>
+  </div> 
+  <!-- 詳細設定メニュー -->
+  <div id="conf-detail" class="collapse">
+    <p>作成日時:<span id="memo_create"></span></p>
+    <p>更新日時:<span id="memo_update"></span></p>
+    <div class="container">
+      <div class="row">
+          <span class="col-3">Group１</span>
+          <select id="group1" class="custom-select detail_groups col-9"></select>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <span class="col-3">Group2</span>
+            <select id="group2" class="custom-select detail_groups col-9"></select>
+        </div>
+      </div>
+
+    <div class="container">
+      <div class="row">
+        <input id="cancel" class="btn btn-danger detail_groups" type="button" value="Cancel">
+        <input id="save" class="btn btn-success detail_groups" type="button" value="Save">
+      </div>
+    </div>
+    <input id="table-visible" class="btn btn-info detail_groups btn-block" type="button" value="すべてのメモを表示">        
+  </div>
+  <!-- 詳細設定表示 -->
+  <a href="#conf-detail" data-toggle="collapse" id="conf-detail-btn" class="btn btn-outline-secondary btn-block" title="Ctrl+S:保存&#13;&#10;Ctrl+Q:終了&#13;&#10;Ctrl+D:詳細設定">▽</a>
+</div>
+
+
+<!-- テーブル表示用 -->
+<div id="all-memo" class="hidden_group">
+  <table class="table table-striped table-dark">
+    <tbody id="memo-table" class="scrollBody">
+    </tbody>
+  </table>
+</div>
+
+<!-- メッセージ -->
+<div id="memo_app_msg" class="alert">
+  <button type="button" class="close">×</button>
+  <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+</div>   
+</body>
+</html>
