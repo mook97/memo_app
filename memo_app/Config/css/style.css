@@ -1,0 +1,54 @@
+/* Memo_app_CSS_File */
+
+html,
+body {
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family:"Meiryo UI","MeiryoKe_Gothic", "MS Gothic", monospace;
+  font-size: 12px;
+}
+
+/* body {padding:10px;} */
+
+/* Header */
+#hd-group {background-color: #62a195;}
+.hd-item {margin-right: 0.4rem; margin-left: 0.4rem; margin-bottom: 0.2rem; min-width: 4rem;}
+.hd-text {margin-left: 0.3rem; font-size: 12px;}
+
+
+/* Form */
+#memo_title {margin-bottom: 6px;}
+#memo_text {height:200px; margin-bottom:6px; background:#fcfcfc; overflow-y:scroll;}
+
+/* msg */
+#memo_app_msg {display:none; display:inline-block; margin-left:2rem;}
+#memo_app_msg {display: none; margin-left: 0px; margin-right: 0px;}
+
+
+/* メモ移動ボタン */
+#add {width: 15%;}
+#new, #pre {margin-left: 0.3rem; margin-right: 0.3rem; width: 40%;}
+
+/* 詳細表示 */
+.detail_groups, #conf-detail-btn {margin-bottom: 6px;}
+
+/* 全メモテーブル */
+thead.scrollHead,tbody.scrollBody{display:block;}
+tbody.scrollBody{overflow-y:scroll; overflow-x:scroll; height:750px; width: 985px;}
+#memo-table{background-color: #ecebeb;}
+#memo-table th{border:1px solid; border-color:#000000;}
+#memo-table td{border:1px solid; border-color:#000000;}
+#memo-table #th-group {background-color: #727070; color: #ffffff;}
+#memo-table #th-group:hover {background-color: #727070;}
+#memo-table .td-group:hover {background-color: #016970; color: #ffffff;}
+#memo-table .active {background-color: #016970; color: #ffffff;}
+[id*="memo_id--"] {cursor : pointer;}
+[id*="memo_id--"]:hover{background-color: #ffffff; color: #71dbe9}
+#line-set-group{width:600px; height: 30px;}
+
+/* その他 */
+.mybtn-gray {border: 0.5px solid #000000; background-color: #ffffff;}
+.mybtn-gray:hover {background-color: #cccccc;}
+.hidden_group {display: none;}
+.br::before {content: "\A"; white-space: pre;}

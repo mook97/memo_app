@@ -1,0 +1,47 @@
+The image file has a Google material icon I'm using.
+I will list the URLs of all files below.
+
+
+
+・sharp-add-24px.svg
+   https://material.io/tools/icons/static/icons/sharp-add-24px.svg
+
+
+
+・sharp-keyboard_arrow_right-24px.svg
+   https://material.io/tools/icons/static/icons/sharp-keyboard_arrow_right-24px.svg
+
+・sharp-keyboard_arrow_left-24px.svg
+   https://material.io/tools/icons/static/icons/sharp-keyboard_arrow_left-24px.svg
+
+
+
+
+ヘッダー
+・sharp-edit-24px.svg
+   https://material.io/tools/icons/static/icons/sharp-edit-24px.svg
+・sharp-playlist_add_check-24px.svg
+   https://material.io/tools/icons/static/icons/sharp-playlist_add_check-24px.svg
+・sharp-list_alt-24px.svg
+   https://material.io/tools/icons/static/icons/sharp-list_alt-24px.svg
+・sharp-refresh-24px.svg
+   https://material.io/tools/icons/static/icons/sharp-refresh-24px.svg
+・sharp-search-24px.svg
+   https://material.io/tools/icons/static/icons/sharp-search-24px.svg
+
+
+エディタ用ボタン
+・sharp-save_alt-24px.svg
+   https://material.io/tools/icons/static/icons/sharp-save_alt-24px.svg
+・sharp-launch-24px.svg
+   https://material.io/tools/icons/static/icons/sharp-launch-24px.svg
+・sharp-delete-24px.svg
+   https://material.io/tools/icons/static/icons/sharp-delete-24px.svg
+・sharp-playlist_add-24px.svg
+   https://material.io/tools/icons/static/icons/sharp-playlist_add-24px.svg
+
+
+
+delete
+/sharp-save-24px.svg
+/

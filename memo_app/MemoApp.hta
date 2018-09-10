@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memo_app</title>
+
+  <!-- HTA Application config -->
+  <hta:application 
+    applicationname="Memo_app" 
+    singleinstance="yes" 
+    showintaskbar="no" 
+    caption="no" 
+    border="none" 
+    innerborder="no" 
+    navigable="yes"
+    scroll="auto"
+  />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./Config/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./Config/css/style.css">
+  <!-- Javascript -->
+  <script src="./Config/js/memo_app_env.js"></script>
+  <script src="./Config/js/jquery.min.js"></script> 
+  <script src="./Config/js/bootstrap.min.js"></script> 
+  <script src="./Config/js/memo_app_main.js"></script>
+  <script src="./Config/js/memo_app_fs.js"></script>
+  <script src="./Config/js/memo_app_disp.js"></script>
+  <script src="./Config/js/memo_app_other.js"></script>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<div class="container-fluid" id="hd-group">
+  <div class="row p-1 aaaa">
+    <span id="memo-visible" class="btn btn-outline-light col-2 col-sm-3 hd-item"><img src="./Config/img/sharp-edit-24px.svg" class="hd-img"><span class="hd-text d-none d-sm-inline-block">edit</span></span>
+    <span id="table-visible" class="btn btn-outline-light col-2 col-sm-3 hd-item"><img src="./Config/img/sharp-list_alt-24px.svg" class="hd-img"><span class="hd-text d-none d-sm-inline-block">table</span></span>
+    <span id="task-visible" class="hidden_group btn btn-outline-light col-2 col-sm-3 hd-item"><img src="./Config/img/sharp-playlist_add_check-24px.svg" class="hd-img"><span class="hd-text d-none d-sm-inline-block">task</span></span>
+    <span id="page-reload" class="btn btn-outline-light col-2 col-sm-1 hd-item"><img src="./Config/img/sharp-refresh-24px.svg" class="hd-img"></span>
+    <span id="search" class="hidden_group btn btn-outline-light col-2 col-sm-1 hd-item"><img src="./Config/img/sharp-search-24px.svg" class="hd-img"></span>
+  </div>
+</div>
+<div id="memo-input-form" style="margin:0px; margin-left:0px; background-color: #f3f3f3;">
+  <div class="container-fluid aaaa" style="padding: 0.5rem;">
+    <!-- 入力フォーム -->
+    <p class="m-1">管理番号:<span id="memo_id"></span></p> 
+    <input type="text" class="form-control" id="memo_title" placeholder="タイトルを入力してください">
+    <textarea id="memo_text" class="form-control" placeholder="本文を入力してください"></textarea>
+    <!-- メモ用のボタン -->
+    <div class="mb-3">
+      <span id="save" class="btn btn-outline-success"><img src="./Config/img/sharp-save-24px.svg" class="hd-img"><span>save</span></span>
+      <span id="save_us" class="btn btn-outline-success"><img src="./Config/img/sharp-save_alt-24px.svg" class="hd-img"><span>save as</span></span>
+      <span id="task_add" class="hidden_group btn btn-outline-success"><img src="./Config/img/sharp-playlist_add-24px.svg" class="hd-img"><span>add</span></span>
+      <span id="delete" class="btn btn-outline-danger"><img src="./Config/img/sharp-delete-24px.svg" class="hd-img"><span>delete</span></span>
+    </div>
+    <!-- メモ移動ボタン -->
+    <div class="container mb-2">
+      <div class="row">
+        <span id="pre" class="btn mybtn-gray"><img src="./Config/img/sharp-keyboard_arrow_left-24px.svg"></span>
+        <span id="new" class="btn mybtn-gray"><img src="./Config/img/sharp-keyboard_arrow_right-24px.svg"></span>
+        <span id="add" class="btn mybtn-gray"><img src="./Config/img/sharp-add-24px.svg"></span>
+      </div>
+    </div>
+  
+    <!-- 詳細設定メニュー -->
+    <div id="conf-detail" class="collapse">
+      <p>作成日時:<span id="memo_create"></span></p>
+      <p>更新日時:<span id="memo_update"></span></p>
+      <div class="container" id="my-list-groups">
+      </div>
+    </div>
+    <!-- 詳細設定表示 -->
+    <a href="#conf-detail" data-toggle="collapse" id="conf-detail-btn" class="btn btn-secondary btn-block" title="Ctrl+S:保存&#13;&#10;Ctrl+Q:終了&#13;&#10;Ctrl+D:詳細設定">▽</a>
+  </div>
+</div>
+
+<!-- テーブル表示用 -->
+<div id="all-memo" class="hidden_group">
+  <div id="line-set-group" class="row mt-3 mb-3">
+    <span class="col ml-3 pt-2 mr-0">表示する行数</span>
+    <select class="custom-select col num">Z
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="30">30</option>
+      <option value="40">40</option>
+      <option value="50">50</option>
+      <option value="10000">すべて</option>
+    </select>
+    <span id="line-set" class="col ml-1 btn btn-primary">設定</span>
+    <span class="col ml-1 btn btn-secondary pre"><img src="./Config/img/sharp-keyboard_arrow_left-24px.svg"></span>
+    <span class="col ml-1 btn btn-secondary next"><img src="./Config/img/sharp-keyboard_arrow_right-24px.svg"></span>
+  </div>
+  <p class="text-right mr-3">最新のID:<span class="latest"></span></p>
+  <table class="table table-hover">
+    <tbody id="memo-table" class="scrollBody"></tbody>
+  </table>
+</div>
+
+<!-- メッセージ -->
+<div id="memo_app_msg" class="alert">
+</div>
+</body>
+</html>
