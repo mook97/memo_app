@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memo_app</title>
+
+  <!-- HTA Application config -->
+  <hta:application 
+    applicationname="Memo_app" 
+    singleinstance="yes" 
+    showintaskbar="no" 
+    caption="no" 
+    border="none" 
+    innerborder="no" 
+    navigable="yes"
+    scroll="auto"
+  />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./Config/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./Config/css/flatpickr.min.css">
+  <link rel="stylesheet" href="./Config/css/material_green.css">
+  <link rel="stylesheet" href="./Config/css/style.css">
+  
+  <!-- Javascript -->
+  <script src="./Config/js/jquery.min.js"></script>
+  <script src="./Config/js/bootbox.min.js"></script>
+  <script src="./Config/js/bootstrap.min.js"></script> 
+  <script src="./Config/js/flatpickr.min.js"></script>
+  <script src="./Config/js/memo_app.min.js"></script>
+  <!-- <script src="./Config/js/memo_app_env.js"></script>
+  <script src="./Config/js/memo_app_fs.js"></script>
+  <script src="./Config/js/memo_app_disp.js"></script>
+  <script src="./Config/js/memo_app_other.js"></script>
+  <script src="./Config/js/memo_app_svg.js"></script>
+  <script src="./Config/js/memo_app_main.js"></script> -->
+</head>
+<body>
+
+
+
+<!-- ヘッダー -->
+  <div class="container-fluid" id="hd-group">
+    <div class="row pt-1 pb-1 mx-auto">
+      <span id="memo-visible" class="btn btn-outline-light col col-sm hd-item fill-wh-bl"><i class="svg-edit"></i><span class="hd-text d-none d-sm-inline-block">edit</span></span>
+      <span id="table-visible" class="btn btn-outline-light col col-sm hd-item fill-wh-bl"><i class="svg-list-alt"></i><span class="hd-text d-none d-sm-inline-block">table</span></span>
+      <span id="task-visible" class="btn btn-outline-light col col-sm hd-item fill-wh-bl"><i class="svg-playlist-add-check"></i><span class="hd-text d-none d-sm-inline-block">task</span></span>
+      <span id="page-reload" class="btn btn-outline-light col col-sm hd-item fill-wh-bl"><i class="svg-refresh"></i></span>
+      <span id="search" class="btn btn-outline-light col col-sm hd-item fill-wh-bl"><i class="svg-search"></i></span>
+    </div>
+  </div>
+  <div id="memo-input-form" class="active">
+    <div class="container-fluid aaaa" style="padding: 0.5rem;">
+      <!-- 入力フォーム -->
+      <p class="m-1">管理番号:<span id="memo_id"></span></p> 
+      <input type="text" class="form-control" id="memo_title" placeholder="タイトルを入力してください">
+      <textarea id="memo_text" class="form-control" placeholder="本文を入力してください"></textarea>
+      <!-- メモ用のボタン -->
+      <div class="mb-3">
+        <span id="save" class="fill-wh-h btn btn-outline-success"><i class="svg-save"></i><span>save</span></span>
+        <span id="save_us" class="fill-wh-h btn btn-outline-success"><i class="svg-save-us"></i><span>save as</span></span>
+        <span id="task_add" class="fill-wh-h btn btn-outline-success"><i class="svg-playlist-add"></i><span>add</span></span>
+        <span id="delete" class="fill-wh-h btn btn-outline-danger"><i class="svg-delete"></i><span>delete</span></span>
+      </div>
+      <!-- メモ移動ボタン -->
+      <div class="container mb-2">
+        <div class="row">
+          <span id="pre" class="btn mybtn-gray"><i class="svg-key-left"></i></span>
+          <span id="new" class="btn mybtn-gray"><i class="svg-key-right"></i></span>
+          <span id="add" class="btn mybtn-gray"><i class="svg-add"></i></span>
+        </div>
+      </div>
+    
+      <!-- 詳細設定メニュー -->
+      <div id="conf-detail" class="collapse">
+        <p>作成日時:<span id="memo_create"></span></p>
+        <p>更新日時:<span id="memo_update"></span></p>
+        <div class="container" id="my-list-groups">
+        </div>
+      </div>
+      <!-- 詳細設定表示 -->
+      <a href="#conf-detail" data-toggle="collapse" id="conf-detail-btn" class="btn btn-secondary btn-block" title="Ctrl+S:保存&#13;&#10;Ctrl+Q:終了&#13;&#10;Ctrl+D:詳細設定">▽</a>
+    </div>
+  </div>
+
+  <!-- テーブル表示用 -->
+  <div id="all-memo" class="hidden_group">
+    <div id="line-set-group" class="row mt-3 mb-3">
+      <span class="col ml-3 pt-2 mr-0">表示する行数</span>
+      <select class="custom-select col num">Z
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50">50</option>
+        <option value="10000">すべて</option>
+      </select>
+      <span id="line-set" class="col ml-1 btn btn-primary">設定</span>
+      <span class="col ml-1 btn btn-secondary pre"><i class="svg-key-left"></i></span>
+      <span class="col ml-1 btn btn-secondary next"><i class="svg-key-right"></i></span>
+    </div>
+    <p class="text-right mr-3">最新の管理番号:<span class="latest"></span></p>
+    <table class="table table-hover">
+      <tbody id="memo-table" class="scrollBody"></tbody>
+    </table>
+  </div>
+
+  <div id="all-task" class="hidden_group" >
+    <table class="table scrollBody">
+        <tr><td>タスクの内容</td><td>状態</td><td>開始</td><td>終了</td><td>コマンド</td></tr>
+        <tr id="new-task-add">
+          <td><textarea class="task-text form-control" placeholder="タスクの内容"></textarea></td>
+          <td><select class="task-progress custom-select">
+            <option value="作業中" selected="selected">作業中</option>
+            <option value="予定">予定</option>
+            <option value="完了">完了</option>
+            <option value="保留">保留</option>
+          </select></td>
+          <td><input class="start form-control datepickr" placeholder="start:YYYY-mm-dd-TT-MM"></td>
+          <td><input class="end form-control datepickr" placeholder="end:YYYY-mm-dd-TT-MM"></td>
+          <td class="command-btn-group">
+            <span class="add btn btn-success fill-wh">追加<i class="ml-1 svg-add"></i></span>
+            <span class="all-save ml-1 btn btn-success fill-wh">全て<i class="ml-1 svg-save"></i></span>
+          </td>
+        </tr>
+      <tbody id="all-task-table" class="mb-5 "></tbody>
+    </table>
+  </div>
+
+  <!-- メッセージ -->
+  <div id="memo_app_msg" class="center-block pt-1"></div>
+</body>
+</html>
