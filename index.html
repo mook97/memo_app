@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>mookMarkDown</title>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="">
+
+<!--[if lt IE 9]>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+<link rel="stylesheet" href="/static/css/mook.css">
+
+</head>
+<body>
+<div id="mookmarkdown" class="split">
+  <div class="setting">
+    <div class="btn-group">
+      <div class="btn boldadd-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+      <div class="btn italicadd-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z"/></svg></div>
+      <div class="btn titleadd-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 4v3h5.5v12h3V7H19V4z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg></div>
+      <i class="tatesen"></i>
+      <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg></div>
+      <div class="btn quoteadd-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+      <div class="btn listadd-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5 1.5-.68 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg></div>
+      <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M2 17h2v.5H3v1h1v.5H2v1h3v-4H2v1zm1-9h1V4H2v1h1v3zm-1 3h1.8L2 13.1v.9h3v-1H3.2L5 10.9V10H2v1zm5-6v2h14V5H7zm0 14h14v-2H7v2zm0-6h14v-2H7v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+      <i class="tatesen"></i>
+      <div class="btn split-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15 21h2v-2h-2v2zm4-12h2V7h-2v2zM3 5v14c0 1.1.9 2 2 2h4v-2H5V5h4V3H5c-1.1 0-2 .9-2 2zm16-2v2h2c0-1.1-.9-2-2-2zm-8 20h2V1h-2v22zm8-6h2v-2h-2v2zM15 5h2V3h-2v2zm4 8h2v-2h-2v2zm0 8c1.1 0 2-.9 2-2h-2v2z"/></svg></div>
+      <div class="btn full-screen"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><defs><path id="a" d="M0 0h24v24H0z"/></defs><clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath><path clip-path="url(#b)" d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/><path clip-path="url(#b)" fill="none" d="M0 0h24v24H0z"/></svg></div>
+      <div class="btn switch-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 7H7v2h2V7zm0 4H7v2h2v-2zm0-8c-1.11 0-2 .9-2 2h2V3zm4 12h-2v2h2v-2zm6-12v2h2c0-1.1-.9-2-2-2zm-6 0h-2v2h2V3zM9 17v-2H7c0 1.1.89 2 2 2zm10-4h2v-2h-2v2zm0-4h2V7h-2v2zm0 8c1.1 0 2-.9 2-2h-2v2zM5 7H3v12c0 1.1.89 2 2 2h12v-2H5V7zm10-2h2V3h-2v2zm0 12h2v-2h-2v2z"/></svg></div>
+      <i class="tatesen"></i>
+      <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+      <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg></div>
+      <i class="tatesen"></i>
+      <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg></div>
+      <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M18.4 10.6C16.55 8.99 14.15 8 11.5 8c-4.65 0-8.58 3.03-9.96 7.22L3.9 16c1.05-3.19 4.05-5.5 7.6-5.5 1.95 0 3.73.72 5.12 1.88L13 16h9V7l-3.6 3.6z"/></svg></div>
+      <i class="tatesen"></i>
+      <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/></svg></div>
+    </div>
+  </div>
+
+  <textarea spellcheck="false" class="mook-edi-chi inputmarkbox"></textarea>
+  <textarea spellcheck="false" class="mook-edi-chi outputmarkbox active" readonly></textarea>
+  <div class="mook-edi-chi previewer"></div>
+</div>
+
+
+
+
+
+<!-- Place your content here -->
+<!-- SCRIPTS -->
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>  
+
+
+<script>
+// drawerのオプション設定
+window.addEventListener('load', function() {
+  const MOOK_MARKDOWN_TAR = '#mookmarkdown';   // Markdown-target
+  const MOOK_EDITOR_ELEM  = document.querySelector('#mookmarkdown > textarea.mook-edi-chi.inputmarkbox');
+  const MOOK_RENDERER = new marked.Renderer(); // Markdown-ReNderer
+
+  var editor_font_size = 14;
+
+  document.querySelector(MOOK_MARKDOWN_TAR + ' > .inputmarkbox').value = localStorage.getItem("textdata") // 前回の保存内容を適用
+  mookMarkUpdate(); // 保存内容をHTMLに変換
+
+  // var startcursor = document.querySelector(MOOK_MARKDOWN_TAR + '> .inputmarkbox').textLength; // 初期値は最後の文字の後ろ
+  var startcursor         = 0;
+  var scrollPosition_top  = 0;
+  var scrollPosition_left = 0;
+  var line_start = 0;
+  var line_end   = 0;
+  var full_screen   = document.querySelector(MOOK_MARKDOWN_TAR + ' > div.setting > div.btn-group > .full-screen');
+  var split_btn     = document.querySelector(MOOK_MARKDOWN_TAR + ' > div.setting > div.btn-group > .split-btn');
+  var switch_btn    = document.querySelector(MOOK_MARKDOWN_TAR + ' > div.setting > div.btn-group > .switch-btn');
+  var boldadd_btn   = document.querySelector(MOOK_MARKDOWN_TAR + ' > div.setting > div.btn-group > .boldadd-btn');
+  var Italicadd_btn = document.querySelector(MOOK_MARKDOWN_TAR + ' > div.setting > div.btn-group > .italicadd-btn');
+  var titleadd_btn  = document.querySelector(MOOK_MARKDOWN_TAR + ' > div.setting > div.btn-group > .titleadd-btn');
+  var quoteadd_btn  = document.querySelector(MOOK_MARKDOWN_TAR + ' > div.setting > div.btn-group > .quoteadd-btn');
+  var listadd_btn  = document.querySelector(MOOK_MARKDOWN_TAR + ' > div.setting > div.btn-group > .listadd-btn');
+
+  // 挿入系の処理のためカーソル位置を取得する
+  document.querySelector(MOOK_MARKDOWN_TAR + '> .inputmarkbox').addEventListener( "blur", function(){
+    startcursor = this.selectionStart;
+    endcursor   = this.selectionEnd; 
+    scrollPosition_top = this.scrollTop;
+    scrollPosition_left = this.scrollLeft;
+    var val = MOOK_EDITOR_ELEM.value;
+    var len = val.length;
+    line_start = val.slice(0, startcursor).search(/[\r\n|\r|\n][^\r\n|\r|\n]*$/); // 行頭を取得
+    if(line_start == -1){line_start = 0}else{line_start++}
+    line_end   = val.slice(endcursor, len).search(/[\r\n|\r|\n]/); // 行末を取得
+    if(line_end == -1){line_end = len}else{line_end = line_end + endcursor}
+    // console.log(val.slice(0, line_start));        // 選択行より前をすべて
+    // console.log('-----------------------------------------')
+    // console.log(val.slice(line_start, line_end)); // 選択行
+    // console.log('-----------------------------------------')
+    // console.log(val.slice(line_end, len));        // 選択行より後ろすべて
+  });
+
+  // 挿入系の処理時にフォーカス位置とスクロール位置を再設定
+  function textareaFocusScroll() {
+    MOOK_EDITOR_ELEM.scrollTop  = scrollPosition_top;
+    MOOK_EDITOR_ELEM.scrollLeft =  scrollPosition_left;
+  }
+
+  // 選択位置への特殊文字追加----------------------------------------------------------------------------
+  // 太字ボタン
+  boldadd_btn.addEventListener('click', function(){
+    var val = MOOK_EDITOR_ELEM.value;
+    if(startcursor == endcursor){
+      // 範囲選択していない場合
+      var preText = val.slice(0, startcursor);
+      var laterText = val.slice(startcursor, val.length); 
+      MOOK_EDITOR_ELEM.value = preText + '****' + laterText;
+      MOOK_EDITOR_ELEM.focus();
+      MOOK_EDITOR_ELEM.setSelectionRange(startcursor + 2, startcursor + 2);
+    } else {
+      var preText = val.slice(0, startcursor);
+      var selctText = val.slice(startcursor, endcursor);
+      var laterText = val.slice(endcursor, val.length);
+      MOOK_EDITOR_ELEM.value = preText + '**' + selctText + '**' + laterText;
+      MOOK_EDITOR_ELEM.focus();
+      MOOK_EDITOR_ELEM.setSelectionRange(startcursor + 2, endcursor + 2);
+    }
+    mookMarkUpdate();
+    textareaFocusScroll();
+  }, false);
+
+  // Italicボタン
+  Italicadd_btn.addEventListener('click', function(){
+    var val = MOOK_EDITOR_ELEM.value;
+    if(startcursor == endcursor){
+      // 範囲選択していない場合
+      var preText = val.slice(0, startcursor);
+      var laterText = val.slice(startcursor, val.length); 
+      MOOK_EDITOR_ELEM.value = preText + '**' + laterText;
+      MOOK_EDITOR_ELEM.focus();
+      MOOK_EDITOR_ELEM.setSelectionRange(startcursor + 2, startcursor + 2);
+    } else {
+      var preText = val.slice(0, startcursor);
+      var selctText = val.slice(startcursor, endcursor);
+      var laterText = val.slice(endcursor, val.length);
+      MOOK_EDITOR_ELEM.value = preText + '*' + selctText + '*' + laterText;
+      MOOK_EDITOR_ELEM.focus();
+      MOOK_EDITOR_ELEM.setSelectionRange(startcursor + 1, endcursor + 1);
+    }
+    mookMarkUpdate();
+    textareaFocusScroll();
+  }, false);
+
+  // Titleボタン
+  titleadd_btn.addEventListener('click', function(){
+    lineHeadAdding(6, '#')
+  }, false);
+
+  // 引用ボタン
+  quoteadd_btn.addEventListener('click', function(){
+    lineHeadAdding(3, '>')
+  })
+
+  //　段落ボタン
+  listadd_btn.addEventListener('click', function(){
+    lineHeadAdding(1, '*')
+  });
+
+
+
+
+  function lineHeadAdding(maxStringNum, tarString) {
+    var val = MOOK_EDITOR_ELEM.value; // もともとのデータ
+    var len = val.length;
+    var pos = startcursor; // 最後に選択していたカーソル位置
+    // var maxStringNum = 6 // Title文字として＃を何回まで許容するか(markedの仕様上6が最大値)
+
+    var selectText   = val.slice(line_start, line_end); // 選択行より前をすべて
+    var lineTexts    = selectText.split(/\r\n|\r|\n/);
+    for (i = 0; i < lineTexts.length; i++) {
+      var text = lineTexts[i];
+      regexp_1 = new RegExp('[^' + tarString + ']'); // ターゲットゲット文字検索用
+      regexp_2 = new RegExp('[^' + tarString + ' ]'); // 除去時に使用するターゲット文字＋スペースを除去
+      level = (text + '【END--LINE-MOOK】').search(regexp_1);
+      if(level == 0){
+        lineTexts[i] =  tarString + ' ' + text;
+      } else if (level == maxStringNum){
+        if((text + '【END--LINE-MOOK】').search(regexp_2) == maxStringNum + 1){
+          lineTexts[i] = text.slice(level + 1, text.length);
+        } else {
+          lineTexts[i] = text.slice(level, text.length);
+        }
+      } else {
+        lineTexts[i] = tarString + text;
+      }
+	  }
+
+    var preText   = val.slice(0, line_start); // 選択行より前をすべて
+    selectText    = lineTexts.join('\n');
+    var laterText = val.slice(line_end, len);
+
+
+    MOOK_EDITOR_ELEM.value = preText + selectText + laterText;
+    MOOK_EDITOR_ELEM.focus();
+    if(lineTexts.length == 1){
+      // 1行のみ選択している場合は選択行の一番後ろにカーソルを持っていく
+      MOOK_EDITOR_ELEM.selectionStart = preText.length + selectText.length;
+      MOOK_EDITOR_ELEM.selectionEnd   = preText.length + selectText.length;
+    } else {
+      MOOK_EDITOR_ELEM.selectionStart = preText.length;
+      MOOK_EDITOR_ELEM.selectionEnd   = preText.length + selectText.length;
+    }
+
+    startcursor =  preText.length + selectText.length;
+    mookMarkUpdate();
+    textareaFocusScroll();
+  }
+
+
+  // 画面切り替え設定開始--------------------------------------------------------------------------------
+  // 切り替えボタン
+  switch_btn.addEventListener('click', function(){
+    if(document.querySelector(MOOK_MARKDOWN_TAR).classList.contains('split')){
+      // 2分割中の処理
+      if(document.querySelector(MOOK_MARKDOWN_TAR + '> .active').classList.contains('outputmarkbox')){
+        var active_tar = document.querySelector(MOOK_MARKDOWN_TAR + '> .previewer')
+        var deactivate_tar = document.querySelector(MOOK_MARKDOWN_TAR + '> .outputmarkbox')
+      } else {
+        var active_tar = document.querySelector(MOOK_MARKDOWN_TAR + '> .outputmarkbox')
+        var deactivate_tar = document.querySelector(MOOK_MARKDOWN_TAR + '> .previewer')
+      }
+      active_tar.classList.add('active')
+      deactivate_tar.classList.remove('active')
+    } else if(document.querySelector(MOOK_MARKDOWN_TAR).classList.contains('full-screen')){
+      // 1画面の場合
+      // 1画面の場合は次の流れで変更:input->html->output
+      if(document.querySelector(MOOK_MARKDOWN_TAR + '> .active').classList.contains('inputmarkbox')){
+        var active_tar = document.querySelector(MOOK_MARKDOWN_TAR + '> .previewer')
+        var deactivate_tar1 = document.querySelector(MOOK_MARKDOWN_TAR + '> .outputmarkbox')        
+        var deactivate_tar2 = document.querySelector(MOOK_MARKDOWN_TAR + '> .inputmarkbox')        
+      } else if(document.querySelector(MOOK_MARKDOWN_TAR + '> .active').classList.contains('previewer')) {
+        var active_tar = document.querySelector(MOOK_MARKDOWN_TAR + '> .outputmarkbox')
+        var deactivate_tar1 = document.querySelector(MOOK_MARKDOWN_TAR + '> .previewer')        
+        var deactivate_tar2 = document.querySelector(MOOK_MARKDOWN_TAR + '> .inputmarkbox')   
+      } else {
+        var active_tar = document.querySelector(MOOK_MARKDOWN_TAR + '> .inputmarkbox')
+        var deactivate_tar1 = document.querySelector(MOOK_MARKDOWN_TAR + '> .previewer')        
+        var deactivate_tar2 = document.querySelector(MOOK_MARKDOWN_TAR + '> .outputmarkbox')   
+      }
+      active_tar.classList.add('active')
+      deactivate_tar1.classList.remove('active')
+      deactivate_tar2.classList.remove('active')
+    }
+  }, false)
+  
+  full_screen.addEventListener('click', function(){
+    if(document.querySelector(MOOK_MARKDOWN_TAR).classList.contains('full-screen')){
+      disp_split_func()
+    }else{
+      disp_full_func()
+    }
+  }, false) // 全画面モード
+  split_btn.addEventListener('click', function(){
+    if(document.querySelector(MOOK_MARKDOWN_TAR).classList.contains('split')){
+      disp_full_func()
+    }else{
+      disp_split_func()
+    }
+  }, false)  // 2分割ボタン
+
+  function disp_full_func(){
+    var mook_markdown_main = document.querySelector(MOOK_MARKDOWN_TAR)
+    for(var i=0; i<mook_markdown_main.classList.length; i++){
+      mook_markdown_main.classList.remove(mook_markdown_main.classList[i]);
+    }
+    mook_markdown_main.classList.add('full-screen');
+
+    var inputbox = document.querySelector(MOOK_MARKDOWN_TAR + '> .inputmarkbox');
+    var previewerbox = document.querySelector(MOOK_MARKDOWN_TAR + '> .previewer');
+    var outputbox = document.querySelector(MOOK_MARKDOWN_TAR + '> .outputmarkbox');
+    inputbox.classList.add('active'); // 初期状態は入力が一番上
+    previewerbox.classList.remove('active')
+    outputbox.classList.remove('active')
+  }
+
+  function disp_split_func(){
+    var mook_markdown_main = document.querySelector(MOOK_MARKDOWN_TAR)
+    for(var i=0; i<mook_markdown_main.classList.length; i++){
+      mook_markdown_main.classList.remove(mook_markdown_main.classList[i])
+    }
+    mook_markdown_main.classList.add('split');
+
+    var inputbox = document.querySelector(MOOK_MARKDOWN_TAR + '> .inputmarkbox');
+    var previewerbox = document.querySelector(MOOK_MARKDOWN_TAR + '> .previewer');
+    var outputbox = document.querySelector(MOOK_MARKDOWN_TAR + '> .outputmarkbox');
+    inputbox.classList.remove('active'); // 初期状態は入力が一番上
+    previewerbox.classList.add('active')
+    outputbox.classList.remove('active')
+  }
+
+  // 画面切り替え終了--------------------------------------------------------------------------------
+  MOOK_RENDERER.heading = function (text, level) {
+    var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+
+    return '<h' + level + '><a name="' +
+                  escapedText +
+                    '" class="anchor" href="#' +
+                    escapedText +
+                    '"><span class="header-link"></span></a>' +
+                    text + '</h' + level + '>';
+  }
+  
+  // color
+  MOOK_RENDERER.em = function(text) {
+    text = text.split('\n').join('__n__'); // 改行のエスケープ
+
+    if(text.search(/.+\\\/.+/) !== -1){
+      var escapedText = text.match(/(.+)\\\/(.+)/) // (@text?cls:color) -text=入力する文字列, -color=指定するカラー
+      return '<span style="color:' + escapedText[2].split('__n__').join('\n') + ';">' + escapedText[1].split('__n__').join('\n') + '</span>';
+    }        
+
+    // font
+    if(text.search(/.+(?=\?font)\?font:.+/) !== -1){
+      var escapedText = text.match(/(.+)(?=\?font)\?font:(.+)/) // (@text?cls:color) -text=入力する文字列, -color=指定するカラー
+      return '<span style="font:' + escapedText[2].split('__n__').join('\n') + ';">' + escapedText[1].split('__n__').join('\n') + '</span>';
+    }
+
+    return '<em style="font-style: italic;">' + text.split('__n__').join('\n') + '</em>';
+  };
+
+  // tableタグ
+  MOOK_RENDERER.table = function(header, body) {
+    if (body) body = '<tbody>' + body + '</tbody>';
+    return '<table class="table table-hover">'
+    + '<thead>'
+    + header
+    + '</thead>'
+    + body
+    + '</table>';
+  };
+
+
+
+  function mookMarkUpdate(){
+    // markdown->HTML
+    var mdText=document.querySelector(MOOK_MARKDOWN_TAR + ' > .inputmarkbox').value
+    document.querySelector(MOOK_MARKDOWN_TAR + ' > .outputmarkbox').value = marked(mdText, { renderer: MOOK_RENDERER });
+    document.querySelector(MOOK_MARKDOWN_TAR + ' > .previewer').innerHTML = marked(mdText, { renderer: MOOK_RENDERER });
+    localStorage.setItem("textdata", mdText);
+  }
+
+  document.querySelector(MOOK_MARKDOWN_TAR + ' > .inputmarkbox').addEventListener('keyup', function(){
+    mookMarkUpdate();
+  });
+
+
+
+
+  document.querySelector(MOOK_MARKDOWN_TAR + ' > textarea').addEventListener('keydown', function(e){
+      if (e.keyCode === 9) {
+        // << tab->space   
+        // textareaの拡張機能　タブ押下でスペースを挿入 spaceNumの値で挿入するスペースの数を変更する。
+        e.preventDefault();
+        var spaceNum = 4;  // タブキーで挿入したいスペースの数
+        var elem = e.target;
+        var val = elem.value;
+        var sPos = val.slice(0, elem.selectionStart).search(/[\r\n|\r|\n][^\r\n|\r|\n]*$/); // 選択開始位置の直前の改行コードまで
+        if(sPos == -1){sPos = 0}else{sPos++}  // 直前に１行目から選択されていた場合の対策
+        var ePos = elem.selectionEnd;         // 選択終了位置
+        var preText  = val.slice(0, sPos);    // 選択範囲より前(選択開始位置までのテキスト)
+        var laterText = val.slice(ePos);      // 選択範囲より後
+        var tarText  = val.slice(sPos, ePos); // 選択範囲
+        var tarArr = tarText.split(/\r\n|\r|\n/)
+        var changed = '';
+        if(e.shiftKey){
+          // インデント除去
+          for(var i=0; i < tarArr.length; i++){
+              if('\u0020'.repeat(spaceNum) === tarArr[i].substring(0, spaceNum)){
+                  changed += tarArr[i].slice(4) + '\n';
+              } else if(tarArr[i].search(/[^\s]/)) {
+                changed += tarArr[i].slice(tarArr[i].search(/[^\s]/)) + '\n';
+              } else {
+                  changed += tarArr[i] + '\n';
+              }
+          }
+          var resultText = preText + changed.slice(0, -1) + laterText;
+          ePos += changed.length - tarText.length - 1;
+          elem.value = resultText;
+          elem.setSelectionRange(sPos, ePos);
+        } else{
+          // インデント追加
+          if(elem.selectionStart == elem.selectionEnd){
+            sPos = elem.selectionStart + 4;
+            ePos = elem.selectionEnd + 4;
+            var resultText = val.slice(0, sPos - 4) +  '\u0020'.repeat(spaceNum) + val.slice(ePos - 4);
+          }else{
+            // それ以外の場合のインデントを追加
+            for(var i=0; i < tarArr.length; i++){
+              changed += '\u0020'.repeat(spaceNum) + tarArr[i] + '\n';
+            }
+            var resultText = preText + changed.slice(0, -1) + laterText;
+            ePos += changed.length - tarText.length - 1;
+          }
+          elem.value = resultText;
+          elem.setSelectionRange(sPos, ePos);
+        }
+    } else if(e.keyCode === 13) {
+      // ENTER押下にて前行のスペース数を次行に反映する
+      e.preventDefault();
+      var elem = e.target;
+      var val = elem.value;
+      var len = val.length;
+      var sPos = elem.selectionStart        // 選択開始位置
+      var ePos = elem.selectionEnd;         // 選択終了位置      
+      var preText  = val.slice(0, sPos);    // 選択範囲より前(選択開始位置までのテキスト)
+      var laterText = val.slice(ePos);      // 選択範囲より後 範囲選択した場合選択範囲は削除されて改行コードに変換される
+      var line_start = val.slice(0, elem.selectionStart).search(/[\r\n|\r|\n][^\r\n|\r|\n]*$/); // 選択開始位置の直前の改行コードまで
+      if(line_start == -1){line_start = 0}else{line_start++}
+      var line_end   = val.slice(elem.selectionEnd, len).search(/[\r\n|\r|\n]/); // 行末を取得
+      if(line_end == -1){line_end = len}else{line_end = line_end + elem.selectionEnd}
+
+
+      spaceNum = (val.slice(line_start, line_end) + '【END--LINE-MOOK】').search(/[^\s]/)
+      if(spaceNum === -1){spaceNum = 0}
+      var is_specialString = (val.slice(line_start + spaceNum, line_end) + '【END--LINE-MOOK】').search(/[\*|\+|\-] /)
+      if(is_specialString === -1){is_specialString = 0} else {is_specialString = 1}
+
+      elem.value = preText + '\n' + '\u0020'.repeat(spaceNum) 
+        + val.slice(line_start+spaceNum, line_start+spaceNum+2).repeat(is_specialString) + laterText;
+
+      elem.selectionStart = preText.length + spaceNum + (is_specialString * 2) + 1 // 改行コード分をプラス
+      elem.selectionEnd   = elem.selectionStart
+      elem.scrollTop = elem.scrollTop + editor_font_size + 10;
+
+
+    }
+  }); // tab->space >>
+
+}); 
+</script>
+
+</body>
+</html>
