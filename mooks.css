@@ -27,13 +27,13 @@ body > *:last-child {
 }
 
 #mookmarkdown.split > .inputmarkbox {left: 0.4%;z-index: 1;}
-#mookmarkdown.split > .outputmarkbox {right: 0.5%;;z-index: 0;}
-#mookmarkdown.split > .previewer {right: 0.5%;z-index: 1;}
+#mookmarkdown.split > .outputmarkbox {right: 0.5%;z-index: 0;} 
+#mookmarkdown.split > .previewer {right: 0.5%;z-index: 0;}
 #mookmarkdown.split > .active {z-index: 1;}
 #mookmarkdown > .previewer {overflow: auto;} /* 通常時のプレビュー (多分いらない) */
 
-
 #mookmarkdown > .mook-edi-chi {
+  overflow: auto;
   width: 47.4%;
   font-family: Helvetica, arial, sans-serif;
   font-size: 14px;
@@ -50,15 +50,14 @@ body > *:last-child {
   border: solid #999999 0.05rem;
 }
 
+#mookmarkdown > .outputmarkbox {background-color: rgb(158, 185, 211);} 
 #mookmarkdown.split > .mook-edi-chi {
   width: 47.4%;
 }
-
 #mookmarkdown.full-screen > .mook-edi-chi {
   width: 97%;
   left: 0.4%;
 }
-
 #mookmarkdown.full-screen > .mook-edi-chi.active {
   z-index: 10;
 }
@@ -126,6 +125,11 @@ i.tatesen {
   height: 90%;
   width:  90%;
 }
+
+#mookmarkdown > div.setting > div.btn-group > div.split-btn {
+  display: none;
+}
+
 /* エディタのボタン類終了 */
 
 
