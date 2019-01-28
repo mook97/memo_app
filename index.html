@@ -19,6 +19,94 @@
 </head>
 <body>
 <div id="mookmarkdown" class="split">
+  <div class="mookColorPicker"></div>
+
+<script>
+window.addEventListener('load', function() {
+  var mookPicker = document.querySelectorAll('.mookColorPicker')
+  var html = [];
+
+  var h_arr = [0 , 31, 60, 120, 151, 180, 209, 240, 271, 300, 360] // 色相 - 列
+  var l_arr = [100] // 輝度 - 行 // すべて１００だから無視
+  var s_arr = [90, 80, 70, 60, 50, 48, 42, 32, 18, 10] // 彩度 - 行
+  html.push('<div class="color-pallete"></div>')
+  for(var i=0; i<10; i++) {
+    html.push('<ul style="float:left; margin: 0; padding: 0;">');
+    for(var j=0; j<10;j++){
+      if(j == 9){
+        html.push('<li class="square-mark"  style="background-color: hsl(' 
+          + h_arr[i] + ','
+          + '0%,'
+          + (100 - (10 * i)) + '%'
+          + ')"></li>');
+      } else {
+        html.push('<li class="square-mark"  style="background-color: hsl(' 
+          + h_arr[i] + ','
+          + '100%,'
+          + s_arr[j] + '%'
+          + ')"></li>');
+      }
+    }
+    html.push('</ul>')
+  }
+
+  // ピック選択方法ボタン
+  var type_image = [
+    '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M11 9h2v2h-2zm-2 2h2v2H9zm4 0h2v2h-2zm2-2h2v2h-2zM7 9h2v2H7zm12-6H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 18H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm2-7h-2v2h2v2h-2v-2h-2v2h-2v-2h-2v2H9v-2H7v2H5v-2h2v-2H5V5h14v6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M4 15h16v-2H4v2zm0 4h16v-2H4v2zm0-8h16V9H4v2zm0-6v2h16V5H4z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M4 11h5V5H4v6zm0 7h5v-6H4v6zm6 0h5v-6h-5v6zm6 0h5v-6h-5v6zm-6-7h5V5h-5v6zm6-6v6h5V5h-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>'
+  ]
+  html.push('<div style="position:relative; top: 0.5rem; left: -0.5rem; margin: 0; width: 108%; height: 2.5rem; display: table;">');
+  for(var i=0; i<type_image.length; i++){
+    html.push('<div class="pick-type" style="position: absolute; top: 0; left: ' + i * 20
+      + '%; width:18%; height:2rem; float:left; margin:0; padding:0.4%; display:table-cell;'
+      + 'border: solid 0.1rem #000000; padding-left: 0.15rem;">' 
+      + type_image[i] + '</div>');
+  }
+  html.push('</div>')
+
+
+  // OK-Cancelボタン
+  html.push('<div class="main-btns">' 
+    + '<div class="select-btn">Cancel</div>' 
+    + '<div class="cancel-btn">Select</div>' 
+    +'</div>')
+
+
+  // html追加
+  for(var i=0; i<mookPicker.length; i++){
+    mookPicker[i].innerHTML = '';
+    mookPicker[i].innerHTML = html.join('');
+  }
+
+  var square_markEle = document.querySelectorAll('div.mookColorPicker > ul > li.square-mark');
+  
+  for(var i=0; i<square_markEle.length; i++){
+    square_markEle[i].addEventListener('click', square_markClick, false);
+    square_markEle[i].addEventListener('mouseover', square_markHover, false);
+  }
+
+  document.querySelector('#mookmarkdown > div.mookColorPicker > div:nth-child(12) > div:nth-child(4)').addEventListener('click', function(){
+    console.log('test');
+  }, false);
+
+  function square_markClick(e){
+    document.querySelector('div.mookColorPicker > div.color-pallete').style.backgroundColor = this.style.backgroundColor;
+  }
+
+  function square_markHover(e){
+    document.querySelector('div.mookColorPicker').style.backgroundColor = this.style.backgroundColor;
+  }
+
+});
+
+</script>
+
+
+
+
   <div class="setting">
     <div class="btn-group">
       <div class="btn boldadd-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
@@ -41,7 +129,6 @@
       <div class="btn coloadd-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill-opacity=".36" d="M0 20h24v4H0z"/><path d="M11 3L5.5 17h2.25l1.12-3h6.25l1.12 3h2.25L13 3h-2zm-1.38 9L12 5.67 14.38 12H9.62z"/></svg></div>
       <!-- <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg></div>
       <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M18.4 10.6C16.55 8.99 14.15 8 11.5 8c-4.65 0-8.58 3.03-9.96 7.22L3.9 16c1.05-3.19 4.05-5.5 7.6-5.5 1.95 0 3.73.72 5.12 1.88L13 16h9V7l-3.6 3.6z"/></svg></div> -->
-      <div class="btn" style="width:5rem;"><input type="color"></div>
       <i class="tatesen"></i>
       <div class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/></svg></div>
     </div>
@@ -51,6 +138,26 @@
   <textarea wrap="soft" spellcheck="false" class="mook-edi-chi outputmarkbox" readonly></textarea>
   <div class="mook-edi-chi previewer active"></div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -454,7 +561,7 @@ window.addEventListener('load', function() {
         if(e.shiftKey){
           // インデント除去
           for(var i=0; i < tarArr.length; i++){
-              if('\u0020'.repeat(spaceNum) === tarArr[i].substring(0, spaceNum)){
+              if(getRepeatStr('\u0020', spaceNum) === tarArr[i].substring(0, spaceNum)){
                   changed += tarArr[i].slice(4) + '\n';
               } else if(tarArr[i].search(/[^\s]/)) {
                 changed += tarArr[i].slice(tarArr[i].search(/[^\s]/)) + '\n';
@@ -471,11 +578,11 @@ window.addEventListener('load', function() {
           if(elem.selectionStart == elem.selectionEnd){
             sPos = elem.selectionStart + 4;
             ePos = elem.selectionEnd + 4;
-            var resultText = val.slice(0, sPos - 4) +  '\u0020'.repeat(spaceNum) + val.slice(ePos - 4);
+            var resultText = val.slice(0, sPos - 4) + getRepeatStr('\u0020', spaceNum) + val.slice(ePos - 4);
           }else{
             // それ以外の場合のインデントを追加
             for(var i=0; i < tarArr.length; i++){
-              changed += '\u0020'.repeat(spaceNum) + tarArr[i] + '\n';
+              changed += getRepeatStr('\u0020', spaceNum) + tarArr[i] + '\n';
             }
             var resultText = preText + changed.slice(0, -1) + laterText;
             ePos += changed.length - tarText.length - 1;
@@ -506,11 +613,10 @@ window.addEventListener('load', function() {
       var is_numlisString = (val.slice(line_start + spaceNum, line_end) + '【END--LINE-MOOK】').search(/\d+\. /)
       if(is_numlisString === -1){is_numlisString = 0} else {is_numlisString = 1}
 
-      console.log('1. '.repeat(is_numlisString))
 
-      elem.value = preText + '\n' + '\u0020'.repeat(spaceNum) 
-        + val.slice(line_start+spaceNum, line_start+spaceNum+2).repeat(is_lisString)
-        + '1. '.repeat(is_numlisString)
+      elem.value = preText + '\n' + getRepeatStr('\u0020', spaceNum)
+        + getRepeatStr(val.slice(line_start+spaceNum, line_start+spaceNum+2), is_lisString)
+        + getRepeatStr('1. ', is_numlisString)
         + laterText;
 
       elem.selectionStart = preText.length + spaceNum + (is_lisString * 2) + (is_numlisString * 3) + 1 // 改行コード分をプラス
@@ -520,6 +626,16 @@ window.addEventListener('load', function() {
 
     }
   }); // tab->space >>
+
+
+ 
+  function getRepeatStr(str, cnt){
+    var result = "";
+    for(var i=0;i<cnt;i++){
+      result += str;
+    }
+    return result;
+  }
 
 }); 
 </script>
